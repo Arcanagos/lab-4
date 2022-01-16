@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DatabaseClass>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Użytkownicy</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                <a asp-action="Create">Stwórz nowego użytkownika</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var singleUser in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => singleUser.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => singleUser.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => singleUser.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => singleUser.City)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@singleUser.ID">Edytuj</a> 
+                    <a asp-action="Delete" asp-route-id="@singleUser.ID">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
